@@ -17,6 +17,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>my-webapp</finalName>
+    <finalName>password-manager-web</finalName>
   </build>
 </project>
