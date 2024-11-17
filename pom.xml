@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>password-manager-web</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
 
     <dependency>
@@ -18,7 +19,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version> <!-- или используйте последнюю доступную версию -->
+      <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
 
