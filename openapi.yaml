@@ -4,9 +4,15 @@ info:
   version: 1.0.0
   description: API для управления паролями, включает операции CRUD
 
+tags:
+  - name: Passwords
+    description: Операции для управления паролями
+
 paths:
   /api/passwords:
     post:
+      tags:
+        - Passwords
       summary: Создать новый пароль
       operationId: createPassword
       requestBody:
@@ -14,39 +20,18 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                site:
-                  type: string
-                  example: "example.com"
-                username:
-                  type: string
-                  example: "user1"
-                password:
-                  type: string
-                  example: "securePass123"
+              $ref: '#/components/schemas/PasswordRequest'
       responses:
         '201':
           description: Пароль успешно создан
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  site:
-                    type: string
-                    example: "example.com"
-                  username:
-                    type: string
-                    example: "user1"
-                  password:
-                    type: string
-                    example: "securePass123"
+                $ref: '#/components/schemas/PasswordResponse'
 
     get:
+      tags:
+        - Passwords
       summary: Получить список всех паролей
       operationId: listPasswords
       responses:
@@ -57,23 +42,12 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      example: 1
-                    site:
-                      type: string
-                      example: "example.com"
-                    username:
-                      type: string
-                      example: "user1"
-                    password:
-                      type: string
-                      example: "securePass123"
+                  $ref: '#/components/schemas/PasswordResponse'
 
   /api/passwords/{id}:
     get:
+      tags:
+        - Passwords
       summary: Получить один пароль по ID
       operationId: getPassword
       parameters:
@@ -88,22 +62,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  site:
-                    type: string
-                    example: "example.com"
-                  username:
-                    type: string
-                    example: "user1"
-                  password:
-                    type: string
-                    example: "securePass123"
+                $ref: '#/components/schemas/PasswordResponse'
 
     put:
+      tags:
+        - Passwords
       summary: Обновить пароль по ID
       operationId: updatePassword
       parameters:
@@ -117,39 +80,18 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                site:
-                  type: string
-                  example: "example.com"
-                username:
-                  type: string
-                  example: "user1"
-                password:
-                  type: string
-                  example: "newSecurePass456"
+              $ref: '#/components/schemas/PasswordRequest'
       responses:
         '200':
           description: Пароль успешно обновлен
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  site:
-                    type: string
-                    example: "example.com"
-                  username:
-                    type: string
-                    example: "user1"
-                  password:
-                    type: string
-                    example: "newSecurePass456"
+                $ref: '#/components/schemas/PasswordResponse'
 
     delete:
+      tags:
+        - Passwords
       summary: Удалить пароль по ID
       operationId: deletePassword
       parameters:
@@ -160,4 +102,39 @@ paths:
             type: integer
       responses:
         '204':
-          description: Пароль успешно удален, содержимого нет
+          description: Пароль успешно удален
+
+components:
+  schemas:
+    PasswordRequest:
+      type: object
+      required:
+        - site
+        - username
+        - password
+      properties:
+        site:
+          type: string
+          example: "example.com"
+        username:
+          type: string
+          example: "user1"
+        password:
+          type: string
+          example: "securePass123"
+
+    PasswordResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        site:
+          type: string
+          example: "example.com"
+        username:
+          type: string
+          example: "user1"
+        password:
+          type: string
+          example: "securePass123"

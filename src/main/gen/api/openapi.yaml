@@ -1,0 +1,168 @@
+openapi: 3.0.0
+info:
+  description: "API для управления паролями, включает операции CRUD"
+  title: Password Management API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/passwords:
+    get:
+      operationId: listPasswords
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listPasswords_200_response_inner'
+                type: array
+          description: Список паролей
+      summary: Получить список всех паролей
+      x-accepts: application/json
+    post:
+      operationId: createPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createPassword_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPasswords_200_response_inner'
+          description: Пароль успешно создан
+      summary: Создать новый пароль
+      x-content-type: application/json
+      x-accepts: application/json
+  /api/passwords/{id}:
+    delete:
+      operationId: deletePassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: "Пароль успешно удален, содержимого нет"
+      summary: Удалить пароль по ID
+      x-accepts: application/json
+    get:
+      operationId: getPassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPasswords_200_response_inner'
+          description: Информация о пароле
+      summary: Получить один пароль по ID
+      x-accepts: application/json
+    put:
+      operationId: updatePassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updatePassword_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updatePassword_200_response'
+          description: Пароль успешно обновлен
+      summary: Обновить пароль по ID
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    listPasswords_200_response_inner:
+      example:
+        site: example.com
+        password: securePass123
+        id: 1
+        username: user1
+      properties:
+        id:
+          example: 1
+          type: integer
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: securePass123
+          type: string
+      type: object
+    updatePassword_request:
+      properties:
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: newSecurePass456
+          type: string
+      type: object
+    createPassword_request:
+      properties:
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: securePass123
+          type: string
+      type: object
+    updatePassword_200_response:
+      example:
+        site: example.com
+        password: newSecurePass456
+        id: 1
+        username: user1
+      properties:
+        id:
+          example: 1
+          type: integer
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: newSecurePass456
+          type: string
+      type: object
+
