@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info:
+  description: "API для управления паролями, включает операции CRUD"
+  title: Password Management API
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- description: Операции для управления паролями
+  name: Passwords
+paths:
+  /api/passwords:
+    get:
+      operationId: listPasswords
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PasswordResponse'
+                type: array
+          description: Список паролей
+      summary: Получить список всех паролей
+      tags:
+      - Passwords
+      x-accepts: application/json
+    post:
+      operationId: createPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResponse'
+          description: Пароль успешно создан
+      summary: Создать новый пароль
+      tags:
+      - Passwords
+      x-content-type: application/json
+      x-accepts: application/json
+  /api/passwords/{id}:
+    delete:
+      operationId: deletePassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Пароль успешно удален
+      summary: Удалить пароль по ID
+      tags:
+      - Passwords
+      x-accepts: application/json
+    get:
+      operationId: getPassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResponse'
+          description: Информация о пароле
+      summary: Получить один пароль по ID
+      tags:
+      - Passwords
+      x-accepts: application/json
+    put:
+      operationId: updatePassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResponse'
+          description: Пароль успешно обновлен
+      summary: Обновить пароль по ID
+      tags:
+      - Passwords
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    PasswordRequest:
+      example:
+        site: example.com
+        password: securePass123
+        username: user1
+      properties:
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: securePass123
+          type: string
+      required:
+      - password
+      - site
+      - username
+      type: object
+    PasswordResponse:
+      example:
+        site: example.com
+        password: securePass123
+        id: 1
+        username: user1
+      properties:
+        id:
+          example: 1
+          type: integer
+        site:
+          example: example.com
+          type: string
+        username:
+          example: user1
+          type: string
+        password:
+          example: securePass123
+          type: string
+      type: object
+
