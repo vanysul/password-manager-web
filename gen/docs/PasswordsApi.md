@@ -20,11 +20,11 @@ All URIs are relative to *http://localhost*
 ### Example
 ```java
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -80,11 +80,11 @@ No authorization required
 ### Example
 ```java
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -139,11 +139,11 @@ No authorization required
 ### Example
 ```java
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -199,11 +199,11 @@ No authorization required
 ### Example
 ```java
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -255,11 +255,11 @@ No authorization required
 ### Example
 ```java
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {

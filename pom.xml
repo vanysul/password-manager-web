@@ -2,32 +2,41 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Basic Project Information -->
   <groupId>by.sulai.interships.projects</groupId>
   <artifactId>password-manager-web</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>password-manager-web</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
 
-  <!-- Specify Java Version -->
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source> <!-- Java 8 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
   </properties>
 
-  <!-- Dependencies -->
   <dependencies>
-    <!-- Jakarta/Javax Servlet API -->
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.0</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>
+      <scope>provided</scope>
+    </dependency>
 
-    <!-- JUnit for Testing -->
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -35,14 +44,35 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Add additional dependencies here if needed -->
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>by.sulai.interships.projects</groupId>
+      <artifactId>password-manager-web</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
-  <!-- Build Plugins -->
   <build>
     <plugins>
-
-      <!-- Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -54,7 +84,6 @@
         </configuration>
       </plugin>
 
-      <!-- OpenAPI Generator Plugin (optional, remove if not needed) -->
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -73,6 +102,6 @@
         </executions>
       </plugin>
     </plugins>
-  </build>
 
+  </build>
 </project>

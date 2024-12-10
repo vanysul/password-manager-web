@@ -1,14 +1,19 @@
 package by.sulai.intership.projects.passwordmanager.web;
-import jakarta.servlet.http  .HttpServletRequest;
-import jakarta.servlet.*;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -27,12 +32,12 @@ public class AuthFilter implements Filter {
             return;
         }
 
+
         chain.doFilter(request, response);
     }
 
     @Override
     public void destroy() {
-        // Очистка ресурсов
-    }
 
+    }
 }

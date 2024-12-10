@@ -2,7 +2,7 @@
 
 Password Management API
 - API version: 1.0.0
-  - Build date: 2024-12-04T23:02:49.145+01:00[Europe/Belgrade]
+  - Build date: 2024-12-10T19:35:14.914+01:00[Europe/Belgrade]
 
 API для управления паролями, включает операции CRUD
 
@@ -80,11 +80,11 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import com.example.ApiClient;
-import com.example.ApiException;
-import com.example.Configuration;
-import com.example.models.*;
-import com.example.api.PasswordsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.PasswordsApi;
 
 public class Example {
   public static void main(String[] args) {
